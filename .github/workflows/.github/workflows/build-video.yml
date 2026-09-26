@@ -1,0 +1,32 @@
+name: Build original sleep video
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_minutes:
+        description: Video length in minutes
+        required: true
+        default: '1'
+  schedule:
+    - cron: '0 12 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      VIDEO_MINUTES: ${{ inputs.video_minutes || '1' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Generate original sleep video
+        run: python3 src/build_video.py
+      - name: Upload video artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: anime-sleep-video
+          path: output/anime-sleep.mp4
+          retention-days: 7
