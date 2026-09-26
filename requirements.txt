@@ -1,0 +1,13 @@
+requests==2.31.0
+python-dotenv==1.0.0
+bing-image-downloader==1.18.0
+ffmpeg-python==0.2.1
+elevenlabs==0.2.28
+pyyaml==6.0
+Google-Search-API==1.2.3
+pytube==15.0.0
+google-generativeai==0.3.0
+pillow==10.0.0
+google-auth-oauthlib==1.1.0
+google-auth-httplib2==0.2.0
+google-api-python-client==2.100.0
